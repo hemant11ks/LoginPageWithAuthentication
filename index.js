@@ -1,14 +1,15 @@
-import express from "express";
-import path from "path";
-import mongoose from "mongoose";
-import cookieParser from "cookie-parser";
-import jwt from "jsonwebtoken";
-import bcrypt from "bcrypt";
+const express=require('express')
+const path=require('path')
+const mongoose = require('mongoose')
+const cookieParser = require('cookie-parser')
+const jwt=require('jsonwebtoken')
+const bcrypt = require('bcrypt')
+require('dotenv').config()
+
+const PORT = process.env.PORT || 5000;
 
 mongoose
-  .connect("mongodb://127.0.0.1:27017", {
-    dbName: "backend",
-  })
+  .connect("mongodb+srv://hemant11ks:hemant2001@cluster0.c7a8tht.mongodb.net/backend")
   .then(() => console.log("Database Connected"))
   .catch((e) => console.log(e));
 
@@ -108,6 +109,6 @@ app.get("/logout", (req, res) => {
   res.redirect("/");
 });
 
-app.listen(5000, () => {
+app.listen(PORT, () => {
   console.log("Server is working");
 });
